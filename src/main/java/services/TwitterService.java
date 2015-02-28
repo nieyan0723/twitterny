@@ -28,7 +28,7 @@ public class TwitterService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAuthentication(@Context HttpServletResponse response,
 			@Context HttpServletRequest request, @QueryParam("user") String user) {
-		Twitter twitter = new TwitterFactory().getInstance();
+		Twitter twitter = new TwitterFactory().getSingleton();//.getInstance();
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
 		} catch (Exception e) {
@@ -36,6 +36,9 @@ public class TwitterService {
 		}
 
 		try {
+			if(twitter.getOAuthAccessToken() !=null){
+				System.out.println("OAUTH ACCESS TOKEN IS THERE ALREADY");
+			}
 			RequestToken requestToken = twitter.getOAuthRequestToken();
 			
 			request.getSession().setAttribute("requestToken", requestToken);
