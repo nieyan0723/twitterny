@@ -60,7 +60,7 @@ public class DB {
 		try {
 			Connection connection = ConnectionProvider.getConnection();
 			PreparedStatement stmt = connection
-					.prepareStatement("SELECT event FROM DATES WHERE username = ? AND application=?");
+					.prepareStatement("SELECT event FROM DATES WHERE username = ?");
 			stmt.setString(1, user);
 			stmt.setString(2, application);
 			ResultSet rs = stmt.executeQuery();
