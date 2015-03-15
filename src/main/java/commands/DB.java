@@ -54,15 +54,14 @@ public class DB {
 		}
 	}
 
-	public String getEvent(String user, String application) {
-		Event event1 = null;
+	public String getEvent(String user) {
+		Event event1 = new Event();
 		String event = null;
 		try {
 			Connection connection = ConnectionProvider.getConnection();
 			PreparedStatement stmt = connection
 					.prepareStatement("SELECT event FROM DATES WHERE username = ?");
 			stmt.setString(1, user);
-			stmt.setString(2, application);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				event = event1.setEvent(rs.getString("event"));
