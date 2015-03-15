@@ -16,13 +16,16 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
+//import model.Event;
 import commands.DB;
+//import commands.GetEvent;
 
 @Path("/twitter")
 public class TwitterService {
 	String consumerKey = "88sBwT9VW6A8vxCrfAkb3Vu3o";
 	String consumerSecret = "Uhvkw1DPid132WoCLM9intxM2SgxTKByeUCxqHIYaHbRLjEmgg";
-
+	
+	
 	@GET
 	@Path("/request")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -87,18 +90,18 @@ public class TwitterService {
 		} catch (Exception e) {
 			System.out.println("Could not store access token to DB");
 		}
-		
-		try {
+		// twitter action need do the post 
+		 try {
 			tweetStatus = twitter.updateStatus("Test From Heroku"
 					+ System.currentTimeMillis());
 		} catch (TwitterException e) {
 			e.printStackTrace();
-		}
+		} 
 		if (tweetStatus != null)
 			return "Check your Twitter, your tweet has been posted:"
 					+ tweetStatus.getText();
 		else
-			return "BOO! didn't work";
+			return "BOO! didn't work"; 
 	}
 
 	@GET
@@ -108,6 +111,7 @@ public class TwitterService {
 		Twitter twitter = new TwitterFactory().getInstance();
 		Status tweetStatus = null;
 		AccessToken accessToken = null;
+		String event = null;
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
 		} catch (Exception e) {
@@ -116,19 +120,19 @@ public class TwitterService {
 		try {
 			DB db = new DB();
 			accessToken = db.getOAuthToken(user, "twitter");
+			event = db.getEvent(user,"twitter");
 			twitter.setOAuthAccessToken(accessToken);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 		try {
-			tweetStatus = twitter.updateStatus("Status Update from Heroku"
-					+ System.currentTimeMillis());
+			tweetStatus = twitter.updateStatus(event);
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
 		if (tweetStatus != null)
 			return "Check your Twitter, your tweet has been posted:"
-					+ tweetStatus.getText();
+					+ event;
 		else
 			return "BOO! didn't work";
 	}

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import twitter4j.auth.AccessToken;
 import connectionprovider.ConnectionProvider;
+import model.Event;
 
 public class DB {
 
@@ -53,4 +54,25 @@ public class DB {
 		}
 	}
 
+	public String getEvent(String user, String application) {
+		Event event1 = null;
+		String event = null;
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("SELECT event FROM DATES WHERE username = ? AND application=?");
+			stmt.setString(1, user);
+			stmt.setString(2, application);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				event = event1.setEvent(rs.getString("event"));
+
+			}
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return event;
+	}
 }
