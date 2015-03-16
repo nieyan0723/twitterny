@@ -145,7 +145,7 @@ public class TwitterService {
 			return "BOO! didn't work";
 	}
 
-	@POST
+	@GET
 	@Path("/createEvent")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
