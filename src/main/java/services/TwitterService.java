@@ -14,6 +14,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import model.Event;
 import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -21,7 +22,6 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
-//import model.Event;
 import commands.DB;
 //import commands.GetEvent;
 
@@ -149,12 +149,13 @@ public class TwitterService {
 	@Path("/createEvent")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void createEvents(@QueryParam("username") String username, @QueryParam("date") Date date, @QueryParam("event") String event) {
-		String username1 = username;
-		Date date1 = date;
-		String event1 = event;
+	public void createEvents(@QueryParam("username") String username, @QueryParam("date") String date, @QueryParam("event") String event) {
+		Event event1 = new Event();
+		event1.setUsername(username);
+		event1.setDate(date);
+		event1.setEvent(event);
 		DB db = new DB();
-		DB.saveEvent(username1, date1, event1);
+		db.saveEvent(event1);
 	}
 
 

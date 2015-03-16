@@ -2,10 +2,12 @@ package commands;
 
 import java.net.URISyntaxException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
+
+
 
 import twitter4j.auth.AccessToken;
 import connectionprovider.ConnectionProvider;
@@ -56,7 +58,6 @@ public class DB {
 	}
 
 	public String getEvent(String user) {
-		Event event1 = new Event();
 		String event = null;
 		try {
 			Connection connection = ConnectionProvider.getConnection();
@@ -65,7 +66,7 @@ public class DB {
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				event = event1.setEvent(rs.getString("event"));
+				event = rs.getString("event");
 
 			}
 		} catch (URISyntaxException e) {
@@ -77,21 +78,22 @@ public class DB {
 	}
 
 // connect to front end, havn't test.
-	public static void saveEvent(String username, Date date, String event) {
+	public String saveEvent(Event eventpara) {
 
 		try {
 			Connection connection = ConnectionProvider.getConnection();
 			PreparedStatement stmt = connection
 					.prepareStatement("INSERT INTO DATES( username, date, event) VALUES(?, ?, ?)");
-			stmt.setString(1, username);
-			stmt.setDate(2, date);
-			stmt.setString(3, event);
-			stmt.executeUpdate();
-			
+			stmt.setString(1, eventpara.getUsername());
+			stmt.setDate(2, Date.valueOf(eventpara.getDate()));
+			stmt.setString(3, eventpara.getModelevent());
+			stmt.executeQuery();
+		
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return "-1";
 	}
 }
