@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Date;
 
 import twitter4j.auth.AccessToken;
 import connectionprovider.ConnectionProvider;
@@ -73,5 +74,24 @@ public class DB {
 			e.printStackTrace();
 		}
 		return event;
+	}
+
+// connect to front end, havn't test.
+	public static void saveEvent(String username, Date date, String event) {
+
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("INSERT INTO DATES( username, date, event) VALUES(?, ?, ?)");
+			stmt.setString(1, username);
+			stmt.setDate(2, date);
+			stmt.setString(3, event);
+			stmt.executeUpdate();
+			
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

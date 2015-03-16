@@ -1,13 +1,18 @@
 package services;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -24,7 +29,7 @@ import commands.DB;
 public class TwitterService {
 	String consumerKey = "88sBwT9VW6A8vxCrfAkb3Vu3o";
 	String consumerSecret = "Uhvkw1DPid132WoCLM9intxM2SgxTKByeUCxqHIYaHbRLjEmgg";
-	
+	String event = null;
 	
 	@GET
 	@Path("/request")
@@ -62,7 +67,7 @@ public class TwitterService {
 		AccessToken accessToken = null;
 		RequestToken requestToken = null;
 		String user = null;
-		String event = null;
+		
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
 		} catch (Exception e) {
@@ -113,7 +118,7 @@ public class TwitterService {
 		Twitter twitter = new TwitterFactory().getInstance();
 		Status tweetStatus = null;
 		AccessToken accessToken = null;
-		String event = null;
+		//String event = null;
 		
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
@@ -123,7 +128,7 @@ public class TwitterService {
 		try {
 			DB db = new DB();
 			accessToken = db.getOAuthToken(user, "twitter");
-			event = db.getEvent(user);
+			//event = db.getEvent(user);
 			twitter.setOAuthAccessToken(accessToken);
 		} catch (Exception e1) {
 			e1.printStackTrace();
@@ -139,4 +144,26 @@ public class TwitterService {
 		else
 			return "BOO! didn't work";
 	}
+
+	@POST
+	@Path("/createEvent")
+	@Produces({ MediaType.APPLICATION_JSON })
+	@Consumes({ MediaType.APPLICATION_JSON })
+	public void createEvents(@QueryParam("username") String username, @QueryParam("date") Date date, @QueryParam("event") String event) {
+		String username1 = username;
+		Date date1 = date;
+		String event1 = event;
+		DB db = new DB();
+		DB.saveEvent(username1, date1, event1);
+	}
+
+
+
+
+
+
+
+
+
+
 }
