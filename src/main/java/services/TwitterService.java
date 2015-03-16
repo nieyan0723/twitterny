@@ -24,7 +24,7 @@ import commands.DB;
 public class TwitterService {
 	String consumerKey = "88sBwT9VW6A8vxCrfAkb3Vu3o";
 	String consumerSecret = "Uhvkw1DPid132WoCLM9intxM2SgxTKByeUCxqHIYaHbRLjEmgg";
-	String event = null;
+	
 	
 	@GET
 	@Path("/request")
@@ -62,6 +62,7 @@ public class TwitterService {
 		AccessToken accessToken = null;
 		RequestToken requestToken = null;
 		String user = null;
+		String event = null;
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
 		} catch (Exception e) {
@@ -93,13 +94,13 @@ public class TwitterService {
 		}
 		// twitter action need do the post 
 		 try {
-			tweetStatus = twitter.updateStatus("Test From Heroku"
+			tweetStatus = twitter.updateStatus("Test From Heroku "
 					+ event);
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		} 
 		if (tweetStatus != null)
-			return "Check your Twitter, your tweet has been posted:"
+			return "Check your Twitter, your tweet has been posted: "
 					+ event;
 		else
 			return "BOO! didn't work"; 
@@ -112,6 +113,7 @@ public class TwitterService {
 		Twitter twitter = new TwitterFactory().getInstance();
 		Status tweetStatus = null;
 		AccessToken accessToken = null;
+		String event = null;
 		
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
@@ -132,7 +134,7 @@ public class TwitterService {
 			e.printStackTrace();
 		}
 		if (tweetStatus != null)
-			return "Check your Twitter, your tweet has been posted:"
+			return "Check your Twitter, your tweet has been posted: "
 					+ event;
 		else
 			return "BOO! didn't work";
