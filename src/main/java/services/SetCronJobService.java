@@ -30,9 +30,8 @@ public class SetCronJobService {
 	String APIToken = "6zhdi1zuikhituz1cm4u1cvpbbw9zfzp";
 	String consumerKey = "88sBwT9VW6A8vxCrfAkb3Vu3o";
 	String consumerSecret = "Uhvkw1DPid132WoCLM9intxM2SgxTKByeUCxqHIYaHbRLjEmgg";
-	int flag = 0 ;
-	String event = null;
-	
+	int flag ;
+	String event;
 	@GET
 	@Path("/runJob")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -40,6 +39,8 @@ public class SetCronJobService {
 		Twitter twitter = new TwitterFactory().getInstance();
 		Status tweetStatus = null;
 		AccessToken accessToken = null;
+		 flag = 0 ;
+		 event = null;
 		
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
@@ -84,6 +85,7 @@ public class SetCronJobService {
     	if(date1.equals(date2)){
     		flag = 1;
     	}	
+    	else flag = 0;
 	}
 		
 }
