@@ -77,7 +77,7 @@ public class DB {
 		return event;
 	}
 
-// connect to front end, havn't test.
+
 	public String saveEvent(Event eventpara) {
 
 		try {
@@ -96,4 +96,45 @@ public class DB {
 		}
 		return "-1";
 	}
+	
+	public String getEventDate(String user) {
+		String date = null;
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("SELECT date FROM DATES WHERE username = ?");
+			stmt.setString(1, user);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				date = rs.getDate("date").toString();
+
+			}
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	public Date getSystemDate() {
+		Date date = null;
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("SELECT CURRENT_DATE");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				date = rs.getDate("date");
+			}
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return date;
+	}
+	
+	
+	
 }

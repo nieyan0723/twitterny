@@ -1,18 +1,18 @@
 package services;
 
-import java.sql.Date;
+//import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
+//import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+//import javax.ws.rs.core.Response;
 
 import model.Event;
 import twitter4j.Status;
@@ -149,13 +149,14 @@ public class TwitterService {
 	@Path("/createEvent")
 	@Produces({ MediaType.APPLICATION_JSON })
 	@Consumes({ MediaType.APPLICATION_JSON })
-	public void createEvents(@QueryParam("username") String username, @QueryParam("date") String date, @QueryParam("event") String event) {
+	public String createEvents(@QueryParam("username") String username, @QueryParam("date") String date, @QueryParam("event") String event) {
 		Event event1 = new Event();
 		event1.setUsername(username);
 		event1.setDate(date);
 		event1.setEvent(event);
 		DB db = new DB();
 		db.saveEvent(event1);
+		return "Your create job is done.";
 	}
 
 
