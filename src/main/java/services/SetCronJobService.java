@@ -56,15 +56,14 @@ public class SetCronJobService {
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
+		if(flag == 1)
+		{
 		try{
-			if(flag == 1)
-			{
+	
 				tweetStatus = twitter.updateStatus("Test From SetCronJob "
 						+ event);
 			}
-			else 
-				return "Oh Its not today! X)";
-			}
+		
 		catch (TwitterException e) {
 		e.printStackTrace();
 		}
@@ -73,6 +72,9 @@ public class SetCronJobService {
 					+ event;
 		else
 			return "BOO! didn't work";
+		}
+		else 
+			return "Oh It's not today! :)";
 	}
 	
 	public void compareDate(String date){
