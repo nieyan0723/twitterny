@@ -49,8 +49,14 @@ public class SetCronJobService {
 		}
 		try{
 			DB db = new DB();
+			Date date1 = db.getSystemDate();
 			String date = db.getEventDate(user);
-			compareDate(date);
+			Date date2 = Date.valueOf(date);
+			if(date1.equals(date2)){
+	    		flag = 1;
+	    	}	
+	    	else flag = 0;
+			
 			accessToken = db.getOAuthToken(user, "twitter");
 			twitter.setOAuthAccessToken(accessToken);
 			event = db.getEvent(user);
@@ -78,7 +84,7 @@ public class SetCronJobService {
 			return "Oh It's not today! :)";
 	}
 	
-	public void compareDate(String date){
+	/*public void compareDate(String date){
 		DB db = new DB();
 		Date date1 = db.getSystemDate();
 		Date date2 = Date.valueOf(date);
@@ -86,6 +92,5 @@ public class SetCronJobService {
     		flag = 1;
     	}	
     	else flag = 0;
-	}
-		
+	}*/
 }
