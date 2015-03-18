@@ -13,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 
 
+
 import model.Event;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -32,6 +33,7 @@ public class SetCronJobService {
 	String consumerSecret = "Uhvkw1DPid132WoCLM9intxM2SgxTKByeUCxqHIYaHbRLjEmgg";
 	int flag ;
 	String event;
+	@SuppressWarnings("deprecation")
 	@GET
 	@Path("/runJob")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -52,7 +54,7 @@ public class SetCronJobService {
 			Date date1 = db.getSystemDate();
 			String date = db.getEventDate(user);
 			Date date2 = Date.valueOf(date);
-			if(date1.equals(date2)){
+			if(date1.getMonth()==date2.getMonth() && date1.getDate()==date2.getDate()){
 	    		flag = 1;
 	    	}	
 	    	else flag = 0;
