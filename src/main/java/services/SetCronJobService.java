@@ -13,9 +13,6 @@ import javax.ws.rs.core.MediaType;
 
 
 
-
-
-
 import model.Event;
 import twitter4j.Status;
 import twitter4j.Twitter;
@@ -65,6 +62,8 @@ public class SetCronJobService {
 				tweetStatus = twitter.updateStatus("Test From SetCronJob "
 						+ event);
 			}
+			else 
+				return "Oh Its not today! X)";
 			}
 		catch (TwitterException e) {
 		e.printStackTrace();
@@ -84,11 +83,5 @@ public class SetCronJobService {
     		flag = 1;
     	}	
 	}
-	
-	
-	
-	
-	
-	
-	
+		
 }
