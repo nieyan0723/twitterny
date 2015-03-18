@@ -56,7 +56,6 @@ public class SetCronJobService {
 	    		flag = 1;
 	    	}	
 	    	else flag = 0;
-			
 			accessToken = db.getOAuthToken(user, "twitter");
 			twitter.setOAuthAccessToken(accessToken);
 			event = db.getEvent(user);
@@ -68,7 +67,7 @@ public class SetCronJobService {
 		try{
 	
 				tweetStatus = twitter.updateStatus("Test From SetCronJob "
-						+ event);
+						+ event + System.currentTimeMillis());
 			}
 		
 		catch (TwitterException e) {
@@ -76,9 +75,9 @@ public class SetCronJobService {
 		}
 		if (tweetStatus != null)
 			return "Check your Twitter, your tweet has been posted: "
-					+ event;
+					+ event + ":D"+ System.currentTimeMillis();
 		else
-			return "BOO! didn't work";
+			return "BOO! didn't work :(";
 		}
 		else 
 			return "Oh It's not today! :)";

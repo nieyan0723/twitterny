@@ -118,7 +118,7 @@ public class TwitterService {
 		Twitter twitter = new TwitterFactory().getInstance();
 		Status tweetStatus = null;
 		AccessToken accessToken = null;
-		//String event = null;
+		event = null;
 		
 		try {
 			twitter.setOAuthConsumer(consumerKey, consumerSecret);
@@ -128,7 +128,7 @@ public class TwitterService {
 		try {
 			DB db = new DB();
 			accessToken = db.getOAuthToken(user, "twitter");
-			//event = db.getEvent(user);
+			event = db.getEvent(user);
 			twitter.setOAuthAccessToken(accessToken);
 		} catch (Exception e1) {
 			e1.printStackTrace();
