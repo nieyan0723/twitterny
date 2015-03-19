@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Event;
+
+import commands.DB;
+
 
 @WebServlet("/MyFirstServlet")
 public class MyFirstServlet extends HttpServlet {
@@ -28,6 +32,15 @@ public class MyFirstServlet extends HttpServlet {
 		pw.println("<br/>got Username:  " + username);
 		pw.println("<br/>got Date    :  " + date);
 		pw.println("<br/>got Event   :  " + event);
+		
+		Event event1 = new Event();
+		event1.setUsername(username);
+		event1.setDate(date);
+		event1.setEvent(event);
+		DB db = new DB();
+		db.saveEvent(event1);
+		pw.println("<br/>Your create job is done. :)");
+		
 	}
 
 
