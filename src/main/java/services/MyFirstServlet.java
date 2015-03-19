@@ -21,13 +21,13 @@ public class MyFirstServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		String username = request.getParameter("Username");
-		String date = request.getParameter("Date");
-		String event = request.getParameter("Event");
+		String username = request.getParameter("username");
+		String date = request.getParameter("date");
+		String event = request.getParameter("event");
 		PrintWriter pw = response.getWriter();
-		pw.println("<br/>got Username:" + username);
-		pw.println("<br/>got Date:" + date);
-		pw.println("<br/>got Event:" + event);
+		pw.println("<br/>got Username:  " + username);
+		pw.println("<br/>got Date    :  " + date);
+		pw.println("<br/>got Event   :  " + event);
 	}
 
 
