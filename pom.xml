@@ -109,6 +109,11 @@
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1100-jdbc41</version>
 		</dependency>
+		<dependency>
+  			<groupId>com.github.kevinsawicki</groupId>
+  			<artifactId>http-request</artifactId>
+  			<version>6.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>LuckyPants</finalName>

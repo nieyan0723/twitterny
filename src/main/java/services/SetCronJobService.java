@@ -85,13 +85,4 @@ public class SetCronJobService {
 			return "Oh It's not today! :)";
 	}
 	
-	/*public void compareDate(String date){
-		DB db = new DB();
-		Date date1 = db.getSystemDate();
-		Date date2 = Date.valueOf(date);
-    	if(date1.equals(date2)){
-    		flag = 1;
-    	}	
-    	else flag = 0;
-	}*/
 }

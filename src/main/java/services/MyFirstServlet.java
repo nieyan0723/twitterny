@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Event;
+import com.github.kevinsawicki.http.HttpRequest;
 
+import model.Event;
 import commands.DB;
 
 
@@ -40,6 +41,9 @@ public class MyFirstServlet extends HttpServlet {
 		DB db = new DB();
 		db.saveEvent(event1);
 		pw.println("<br/>Your create job is done. :)");
+		String APIToken = "6zhdi1zuikhituz1cm4u1cvpbbw9zfzp";
+		HttpRequest requestsetcrojob = HttpRequest.get("https://www.setcronjob.com/api/cron.add", true, "token", APIToken, "expression", "27 16 * * *",
+				"url","http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+username);
 		
 	}
 

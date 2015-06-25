@@ -116,7 +116,6 @@ public class DB {
 		}
 		return date;
 	}
-	
 	public Date getSystemDate() {
 		Date date = null;
 		try {
