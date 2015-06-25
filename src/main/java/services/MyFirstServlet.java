@@ -44,7 +44,7 @@ public class MyFirstServlet extends HttpServlet {
 		String APIToken = "6zhdi1zuikhituz1cm4u1cvpbbw9zfzp";
 		HttpRequest requestsetcrojob = HttpRequest.get("https://www.setcronjob.com/api/cron.add", true, "token", APIToken, "expression", "27 16 * * *",
 				"url","http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+username);
-		
+		System.out.println(requestsetcrojob.toString()); 
 	}
 
 
