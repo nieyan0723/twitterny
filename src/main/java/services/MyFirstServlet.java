@@ -18,7 +18,7 @@ import commands.DB;
 @WebServlet("/MyFirstServlet")
 public class MyFirstServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
- 
+	
     public MyFirstServlet() {
         super();
     }
@@ -41,10 +41,19 @@ public class MyFirstServlet extends HttpServlet {
 		DB db = new DB();
 		db.saveEvent(event1);
 		pw.println("<br/>Your create job is done. :)");
-		String APIToken = "6zhdi1zuikhituz1cm4u1cvpbbw9zfzp";
-		HttpRequest requestsetcrojob = HttpRequest.get("https://www.setcronjob.com/api/cron.add", true, "token", APIToken, "expression", "27 16 * * *",
-				"url","http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+username);
-		System.out.println(requestsetcrojob.toString()); 
+		//String APIToken = "6zhdi1zuikhituz1cm4u1cvpbbw9zfzp";
+		//HttpRequest requestsetcrojob = HttpRequest.get("https://www.setcronjob.com/api/cron.add", true, "token", APIToken, "expression", "27 16 * * *",
+		//		"url","http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+username);
+		//int requestsetcrojob = HttpRequest.post("https://www.setcronjob.com/api/cron.add").send("token=6zhdi1zuikhituz1cm4u1cvpbbw9zfzp").code();
+		//System.out.println(requestsetcrojob); 
+		HttpURLConnectionExample http = new HttpURLConnectionExample();
+		try {
+			http.sendPost(username);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 
