@@ -58,7 +58,7 @@ public class SetCronJobWeather {
 		try{
 			DB db = new DB();
 			temp = db.getTemp(user);
-			tempInC = Double.toString(Math.round((Float.parseFloat(temp)-273.15)*100)/100);
+			tempInC = Float.toString(Math.round((Float.parseFloat(temp)-273.15)*100)/100);
 			weathermain = db.getWeathermain(user);
 			description = db.getDescription(user);
 			location = db.getLocation(user);
@@ -72,7 +72,7 @@ public class SetCronJobWeather {
 	
 		try{
 	
-				tweetStatus = twitter.updateStatus("Greetings!:)/n The temperature in "+location+" is: "+tempInC+"\u00b0"+"C./n The main weather is: "+ weathermain + "./n The detailed description is: " + description +"." 
+				tweetStatus = twitter.updateStatus("Greetings!:)\n The temperature in "+location+" is: "+tempInC+"\u00b0"+"C.\n The main weather is: "+ weathermain + ".\n The detailed description is: " + description +"." 
 						);
 			}
 		
