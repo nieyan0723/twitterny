@@ -64,8 +64,8 @@ public class MyFirstServlet extends HttpServlet {
 		
 	
 		String urllocation = "http://api.openweathermap.org/data/2.5/weather?q="+location+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
-		urlstring = URLEncoder.encode(urllocation,"UTF-8");
-		URL url = new URL(urlstring);
+		//urlstring = URLEncoder.encode(urllocation,"UTF-8");
+		URL url = new URL(urllocation);
 		
 		// read from the URL
 	    Scanner scan = new Scanner(url.openStream());
