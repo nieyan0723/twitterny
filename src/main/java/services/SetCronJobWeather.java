@@ -38,6 +38,7 @@ public class SetCronJobWeather {
 	String weathermain;
 	String description;
 	String location;
+	String tempInC ;
 	@SuppressWarnings("deprecation")
 	@GET
 	@Path("/runJobWeather")
@@ -57,6 +58,7 @@ public class SetCronJobWeather {
 		try{
 			DB db = new DB();
 			temp = db.getTemp(user);
+			tempInC = String.valueOf(Float.parseFloat(temp)-273.15);
 			weathermain = db.getWeathermain(user);
 			description = db.getDescription(user);
 			location = db.getLocation(user);
@@ -70,7 +72,7 @@ public class SetCronJobWeather {
 	
 		try{
 	
-				tweetStatus = twitter.updateStatus("The temperature in "+location+" is: "+temp+" . The main weather is: "+ weathermain + ". The detailed description is: " + description +"." 
+				tweetStatus = twitter.updateStatus("Greetings! The temperature in "+location+" is: "+tempInC+"¡æ. The main weather is: "+ weathermain + ". The detailed description is: " + description +". :)" 
 						);
 			}
 		
