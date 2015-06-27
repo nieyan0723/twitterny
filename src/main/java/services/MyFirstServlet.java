@@ -110,7 +110,7 @@ public class MyFirstServlet extends HttpServlet {
 		
 		HttpURLConnectionExample http = new HttpURLConnectionExample();
 		try {
-			http.sendPostEvent(username);
+			//http.sendPostEvent(username);
 			http.sendPostWeather(username);
 			//weatherdb.deleteWeather(username);
 		} catch (Exception e) {
