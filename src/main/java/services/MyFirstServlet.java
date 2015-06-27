@@ -63,9 +63,9 @@ public class MyFirstServlet extends HttpServlet {
 		//CurrentWeather cwd = owm.currentWeatherByCityName(location);
 		
 	
-		String urllocation = "api.openweathermap.org/data/2.5/weather?q="+location+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
-		urlstring = URLEncoder.encode(urllocation,"UTF-8");
-		URL url = new URL(urlstring);
+		String urllocation = "api.openweathermap.org/data/2.5/weather?q=West%20Haven&APPID=77e9ead2b934d798bb55b68a04f97dc2";
+		//urlstring = URLEncoder.encode(urllocation,"UTF-8");
+		URL url = new URL(urllocation);
 		
 		// read from the URL
 	    Scanner scan = new Scanner(url.openStream());
