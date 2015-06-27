@@ -110,7 +110,7 @@ public class MyFirstServlet extends HttpServlet {
 		
 		HttpURLConnectionExample http = new HttpURLConnectionExample();
 		try {
-			http.sendPost(username);
+			http.sendPostEvent(username);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

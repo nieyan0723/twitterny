@@ -57,8 +57,8 @@ public class HttpURLConnectionExample{
  
 	}*/
  
-	// HTTP POST request
-	public void sendPost(String username) throws Exception {
+	// HTTP POST request 
+	public void sendPostEvent(String username) throws Exception {
 		String url = "https://www.setcronjob.com/api/cron.add";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
@@ -68,7 +68,7 @@ public class HttpURLConnectionExample{
 		con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
  
-		String urlParameters = "token=6zhdi1zuikhituz1cm4u1cvpbbw9zfzp&expression=30%2012%20*%20*%20*&url=http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+ username;
+		String urlParameters = "token=6zhdi1zuikhituz1cm4u1cvpbbw9zfzp&expression=30%2010%20*%20*%20*&url=http://twitterny.herokuapp.com/rest/SetCronJob/runJob?user="+ username;
  
 		// Send post request
 		con.setDoOutput(true);
