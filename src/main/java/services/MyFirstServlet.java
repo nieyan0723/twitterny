@@ -76,7 +76,7 @@ public class MyFirstServlet extends HttpServlet {
 	    
 	    // build a JSON object
 	    JSONObject jsonobj = new JSONObject(str);
-		String temp = jsonobj.getJSONObject("main").getString("temp");
+		String temp = Double.toString(jsonobj.getJSONObject("main").getDouble("temp"));
 		JSONArray arr = jsonobj.getJSONArray("weather");
 		for (int i = 0; i < arr.length(); i++)
 		{
