@@ -72,7 +72,7 @@ public class SetCronJobWeather {
 	
 		try{
 	
-				tweetStatus = twitter.updateStatus("Greetings! 123\nThe temperature in "+location+" is: "+tempInC+"\u00b0"+"C.\nThe main weather is: "+ weathermain + ".\nThe detailed description is: " + description +"." 
+				tweetStatus = twitter.updateStatus("Greetings! 1234\nThe temperature in "+location+" is: "+tempInC+"\u00b0"+"C.\nThe main weather is: "+ weathermain + ".\nThe detailed description is: " + description +"." 
 						);
 			}
 		
@@ -81,7 +81,7 @@ public class SetCronJobWeather {
 		}
 		if (tweetStatus != null)
 			return "Check your Twitter, your tweet has been posted: "
-					+ location+" "+Float.toString(Float.parseFloat(temp))+" "+weathermain+" "+description + ":D  CurrentTimeMill:"+ System.currentTimeMillis();
+					+ location+" "+Float.toString(Float.parseFloat(temp)-273.15)+" "+weathermain+" "+description + ":D  CurrentTimeMill:"+ System.currentTimeMillis();
 		else
 			return "BOO! didn't work :(";
 	
