@@ -104,7 +104,7 @@ public class DB {
 		try {
 			Connection connection = ConnectionProvider.getConnection();
 			PreparedStatement stmt = connection
-					.prepareStatement("DELETE * FROM DATES WHERE username = ?");
+					.prepareStatement("DELETE FROM DATES WHERE username = ?");
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
 			
@@ -257,7 +257,7 @@ public class DB {
 		try {
 			Connection connection = ConnectionProvider.getConnection();
 			PreparedStatement stmt = connection
-					.prepareStatement("DELETE * FROM weathers WHERE username = ?");
+					.prepareStatement("DELETE FROM weathers WHERE username = ?");
 			stmt.setString(1, user);
 			ResultSet rs = stmt.executeQuery();
 			
