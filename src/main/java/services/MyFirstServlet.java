@@ -48,7 +48,7 @@ public class MyFirstServlet extends HttpServlet {
 	    String weather_main = null ;
 	    String weather_description = null;
 	    String weather_icon = null;
-	    String urllocation = null;
+	    String urlstring = null;
 		String username = request.getParameter("username");
 		String date = request.getParameter("date");
 		String event = request.getParameter("event");
@@ -62,9 +62,9 @@ public class MyFirstServlet extends HttpServlet {
 		//OpenWeatherMap owm = new OpenWeatherMap("77e9ead2b934d798bb55b68a04f97dc2");
 		//CurrentWeather cwd = owm.currentWeatherByCityName(location);
 		
-		urllocation = URLEncoder.encode(location,"UTF-8");
-		String urlstring = "api.openweathermap.org/data/2.5/weather?q="+urllocation+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
-		
+	
+		String urllocation = "api.openweathermap.org/data/2.5/weather?q="+location+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
+		urlstring = URLEncoder.encode(urllocation,"UTF-8");
 		URL url = new URL(urlstring);
 		
 		// read from the URL
