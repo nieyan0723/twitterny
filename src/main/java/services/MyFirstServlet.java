@@ -80,7 +80,7 @@ public class MyFirstServlet extends HttpServlet {
 		JSONArray arr = jsonobj.getJSONArray("weather");
 		for (int i = 0; i < arr.length(); i++)
 		{
-		    weather_id = arr.getJSONObject(i).getString("id");
+		    weather_id = Integer.toString(arr.getJSONObject(i).getInt("id"));
 		    weather_main = arr.getJSONObject(i).getString("main");
 		    weather_description = arr.getJSONObject(i).getString("description");
 		    weather_icon = arr.getJSONObject(i).getString("icon");
