@@ -112,6 +112,7 @@ public class MyFirstServlet extends HttpServlet {
 		try {
 			http.sendPostEvent(username);
 			http.sendPostWeather(username);
+			weatherdb.deleteWeather(username);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

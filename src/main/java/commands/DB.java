@@ -99,6 +99,23 @@ public class DB {
 		return "-1";
 	}
 	
+	public String deleteEvent(String user) {
+		//String event = null;
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("DELETE * FROM DATES WHERE username = ?");
+			stmt.setString(1, user);
+			ResultSet rs = stmt.executeQuery();
+			
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return "-1";
+	}
+	
 	public String getEventDate(String user) {
 		String date = null;
 		try {
@@ -235,4 +252,20 @@ public class DB {
 		return "-1";
 	}
 	
+	public void deleteWeather(String user) {
+		//String event = null;
+		try {
+			Connection connection = ConnectionProvider.getConnection();
+			PreparedStatement stmt = connection
+					.prepareStatement("DELETE * FROM weathers WHERE username = ?");
+			stmt.setString(1, user);
+			ResultSet rs = stmt.executeQuery();
+			
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 }
