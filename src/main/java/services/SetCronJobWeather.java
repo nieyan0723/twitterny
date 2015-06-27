@@ -70,7 +70,7 @@ public class SetCronJobWeather {
 	
 		try{
 	
-				tweetStatus = twitter.updateStatus("Good morning! The temperature in "+location+" is: "+temp+" . The main weather is: "+ weathermain + ". The detailed description is: " + description +". Wish you Have a good day!:)" 
+				tweetStatus = twitter.updateStatus("The temperature in "+location+" is: "+temp+" . The main weather is: "+ weathermain + ". The detailed description is: " + description +"." 
 						);
 			}
 		
