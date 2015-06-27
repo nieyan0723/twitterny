@@ -25,7 +25,7 @@ public class HttpURLConnectionExample{
 	//}
  
 	// HTTP GET request
-	public String sendGet(String url) throws Exception {
+	/*public String sendGet(String url) throws Exception {
  
 		//String url = "api.openweathermap.org/data/2.5/weather?q=";
  
@@ -55,7 +55,7 @@ public class HttpURLConnectionExample{
 		//print result
 		//System.out.println(response.toString());
  
-	}
+	}*/
  
 	// HTTP POST request
 	public void sendPost(String username) throws Exception {

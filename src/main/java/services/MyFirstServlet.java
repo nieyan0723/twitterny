@@ -17,6 +17,10 @@ import java.net.MalformedURLException;
 
 
 
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.Scanner;
+
 import model.Event;
 import model.WeatherDb;
 
@@ -44,6 +48,7 @@ public class MyFirstServlet extends HttpServlet {
 	    String weather_main = null ;
 	    String weather_description = null;
 	    String weather_icon = null;
+	    String urllocation = null;
 		String username = request.getParameter("username");
 		String date = request.getParameter("date");
 		String event = request.getParameter("event");
@@ -56,19 +61,23 @@ public class MyFirstServlet extends HttpServlet {
 		
 		//OpenWeatherMap owm = new OpenWeatherMap("77e9ead2b934d798bb55b68a04f97dc2");
 		//CurrentWeather cwd = owm.currentWeatherByCityName(location);
-		String url = "api.openweathermap.org/data/2.5/weather?q="+location+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
 		
-		HttpURLConnectionExample httpwd = new HttpURLConnectionExample();
-		JSONObject jsonobj = null;
-		try {
-			jsonobj = new JSONObject(httpwd.sendGet(url));
-		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		urllocation = URLEncoder.encode(location,"UTF-8");
+		String urlstring = "api.openweathermap.org/data/2.5/weather?q="+urllocation+"&APPID=77e9ead2b934d798bb55b68a04f97dc2";
+		
+		URL url = new URL(urlstring);
+		
+		// read from the URL
+	    Scanner scan = new Scanner(url.openStream());
+	    String str = new String();
+	    while (scan.hasNext())
+	        str += scan.nextLine();
+	    scan.close();
+	    
+	    // build a JSON object
+	    JSONObject jsonobj = new JSONObject(str);
+	    if (! jsonobj.getString("status").equals("OK"))
+	        return;
 		String temp = jsonobj.getJSONObject("main").getString("temp");
 		JSONArray arr = jsonobj.getJSONArray("weather");
 		for (int i = 0; i < arr.length(); i++)
