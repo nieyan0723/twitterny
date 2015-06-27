@@ -59,7 +59,7 @@ public class HttpURLConnectionExample{
  
 	// HTTP POST request 
 	public void sendPostEvent(String username) throws Exception {
-		String url = "https://www.setcronjob.com/api/cron.add";
+		String url = "https://www.setcronjob.com/api/cron.add?";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
  
@@ -97,7 +97,7 @@ public class HttpURLConnectionExample{
  
 	}
 	public void sendPostWeather(String username) throws Exception {
-		String url = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather";
+		String url = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather?";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
  

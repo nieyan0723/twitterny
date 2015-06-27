@@ -104,20 +104,19 @@ public class MyFirstServlet extends HttpServlet {
 		event1.setEvent(event);
 		DB db = new DB();
 		db.saveEvent(event1);
-		//pw.println("<br/>Your create job is done. :)");
+		pw.println("<br/>Your create job is done. :)");
    
 		
 		
 		HttpURLConnectionExample http = new HttpURLConnectionExample();
 		try {
-			//http.sendPostEvent(username);
+			http.sendPostEvent(username);
 			http.sendPostWeather(username);
-			//weatherdb.deleteWeather(username);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		pw.println("<br/>Your create job is done. :)");
+		
 	}
 
 
