@@ -58,7 +58,7 @@ public class SetCronJobWeather {
 		try{
 			DB db = new DB();
 			temp = db.getTemp(user);
-			tempInC = Float.toString(Math.round((Float.parseFloat(temp)-273.15f)*100)/100);
+			tempInC = Double.toString(Float.parseFloat(temp)-273.15f);
 			weathermain = db.getWeathermain(user);
 			description = db.getDescription(user);
 			location = db.getLocation(user);
