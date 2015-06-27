@@ -25,9 +25,9 @@ public class HttpURLConnectionExample{
 	//}
  
 	// HTTP GET request
-	/*private void sendGet() throws Exception {
+	public String sendGet(String url) throws Exception {
  
-		String url = "http://www.google.com/search?q=mkyong";
+		//String url = "api.openweathermap.org/data/2.5/weather?q=";
  
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -51,11 +51,11 @@ public class HttpURLConnectionExample{
 			response.append(inputLine);
 		}
 		in.close();
- 
+		return response.toString();
 		//print result
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
  
-	}*/
+	}
  
 	// HTTP POST request
 	public void sendPost(String username) throws Exception {
