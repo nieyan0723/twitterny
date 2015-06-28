@@ -105,13 +105,16 @@ public class MyFirstServlet extends HttpServlet {
 		DB db = new DB();
 		db.saveEvent(event1);
 		pw.println("<br/>Your create job is done. :)");
-   
 		
-		
+		String urlweather = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather?user="+username;
+		URL url2 = new URL(urlweather);
+		//url2.openStream();
+		 Scanner scan2 = new Scanner(url2.openStream());
+		 scan2.close();
 		HttpURLConnectionExample http = new HttpURLConnectionExample();
 		try {
 			http.sendPostEvent(username);
-			http.sendPostWeather(username);
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
