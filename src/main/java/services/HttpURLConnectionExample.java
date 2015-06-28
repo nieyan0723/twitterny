@@ -97,7 +97,7 @@ public class HttpURLConnectionExample{
  
 	}
 	public void sendPostWeather(String username) throws Exception {
-		String url = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather?";
+		String url = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
  
