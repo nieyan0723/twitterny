@@ -33,11 +33,11 @@ import commands.DB;
 
 
 
-@WebServlet("/TwitterAssistant")
-public class TwitterAssistant extends HttpServlet {
+@WebServlet("/TwitterAssistant2")
+public class TwitterAssistant2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    public TwitterAssistant() {
+    public TwitterAssistant2() {
         super();
     }
 
@@ -50,13 +50,13 @@ public class TwitterAssistant extends HttpServlet {
 	    String weather_icon = null;
 	    String urlstring = null;
 		String username = request.getParameter("username");
-		String date = request.getParameter("date");
-		String event = request.getParameter("event");
+		//String date = request.getParameter("date");
+		//String event = request.getParameter("event");
 		String location = request.getParameter("location");
 		PrintWriter pw = response.getWriter();
 		pw.println("<br/>got Username:  " + username);
-		pw.println("<br/>got Date    :  " + date);
-		pw.println("<br/>got Event   :  " + event);
+	//	pw.println("<br/>got Date    :  " + date);
+	//	pw.println("<br/>got Event   :  " + event);
 		pw.println("<br/>got Location   :  " + location); 
 		
 		//OpenWeatherMap owm = new OpenWeatherMap("77e9ead2b934d798bb55b68a04f97dc2");
@@ -98,12 +98,12 @@ public class TwitterAssistant extends HttpServlet {
 		DB weatherdb = new DB();
 		weatherdb.saveWeatherDb(weather1);
 		
-		Event event1 = new Event();
-		event1.setUsername(username);
-		event1.setDate(date);
-		event1.setEvent(event);
-		DB db = new DB();
-		db.saveEvent(event1);
+	//	Event event1 = new Event();
+	//	event1.setUsername(username);
+	//	event1.setDate(date);
+	//	event1.setEvent(event);
+	//	DB db = new DB();
+	//	db.saveEvent(event1);
 		pw.println("<br/>Your create job is done. :)");
 		
 		String urlweather = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather?user="+username;
@@ -111,14 +111,14 @@ public class TwitterAssistant extends HttpServlet {
 		//url2.openStream();
 		 Scanner scan2 = new Scanner(url2.openStream());
 		 scan2.close();
-		HttpURLConnectionExample http = new HttpURLConnectionExample();
+	/*	HttpURLConnectionExample http = new HttpURLConnectionExample();
 		try {
 			http.sendPostEvent(username);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} */
 		
 	}
 
