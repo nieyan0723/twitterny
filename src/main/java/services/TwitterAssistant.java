@@ -33,7 +33,7 @@ import commands.DB;
 
 
 
-@WebServlet("/Twitter Assistant")
+@WebServlet("/TwitterAssistant")
 public class TwitterAssistant extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -53,11 +53,11 @@ public class TwitterAssistant extends HttpServlet {
 		String date = request.getParameter("date");
 		String event = request.getParameter("event");
 		String location = request.getParameter("location");
-		//PrintWriter pw = response.getWriter();
-		//pw.println("<br/>got Username:  " + username);
-		//pw.println("<br/>got Date    :  " + date);
-		//pw.println("<br/>got Event   :  " + event);
-		//pw.println("<br/>got Location   :  " + location); 
+		PrintWriter pw = response.getWriter();
+		pw.println("<br/>got Username:  " + username);
+		pw.println("<br/>got Date    :  " + date);
+		pw.println("<br/>got Event   :  " + event);
+		pw.println("<br/>got Location   :  " + location); 
 		
 		//OpenWeatherMap owm = new OpenWeatherMap("77e9ead2b934d798bb55b68a04f97dc2");
 		//CurrentWeather cwd = owm.currentWeatherByCityName(location);
@@ -104,7 +104,7 @@ public class TwitterAssistant extends HttpServlet {
 		event1.setEvent(event);
 		DB db = new DB();
 		db.saveEvent(event1);
-		//pw.println("<br/>Your create job is done. :)");
+		pw.println("<br/>Your create job is done. :)");
 		
 		String urlweather = "http://twitterny.herokuapp.com/rest/SetCronJob/runJobWeather?user="+username;
 		URL url2 = new URL(urlweather);
