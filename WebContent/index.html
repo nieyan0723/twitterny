@@ -1,1 +1,63 @@
-Hello world!
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Twitter Assistant</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1>Twitter Assistant</h1>
+				<p>An assistant tool for helping you remember the important event.<br />
+				Also can give you the accurate weather information.<br />
+				</p>
+				<h2>Before using this assistant, you only need to finish the following setup:</h2>
+				<p>Copy the following link to the browser address bar,
+				fill in the user name, and finish the twitter authentication.<br />
+				https://twitterny.herokuapp.com/rest/twitter/request?user=&ltusername&gt <br /></p>
+				<h2>Now you can enjoy our service.</h2>	
+			</header>	
+				
+			<p>Do you have some special events need to be remembered? <br />
+			Please fill in the following form, we will take care of it.</p>
+
+		<!-- Event Reminder -->
+			<form id="Event-Reminder" method="GET" action="TwitterAssistant">
+			<p><label for=“username">Username: (Ex.yanNIE)</label> <input type="text" name="username"></p>
+			<p><label for=“date">Date: (Ex.2015-07-23)</label> <input type="text" name="date"></p>
+			<p><label for=“event">Event: (Ex.@Yan_NIE_CT,Happy Birthday!)</label> <input type="text" name="event"></p>
+			<p class="submit"><input type="submit" value="Remind me." /></p>
+			</form>
+			<br />
+			<br />
+			<p>Also We are concerned about the climate of your life Surroundings. <br />
+			Please fill in the following form, we will send you the weather information of your location immediately.</p>
+			
+		<!-- Weather Reminder -->
+			<form id="Weather-Reminder"  method="GET" action="TwitterAssistant">
+			<p><label for=“username">Username: (Ex.yanNIE)</label> <input type="text" name="username"></p>
+			<p><label for=“location">Location: (Ex.West Haven)</label> <input type="text" name="location"></p>
+			<p class="submit"><input type="submit" value="Tell me the weather." /></p>
+			</form>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://twitter.com/" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="https://github.com/nieyan0723/twitterny" class="icon fa-github"><span class="label">GitHub</span></a></li>
+				</ul>
+			</footer>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
