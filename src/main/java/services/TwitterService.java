@@ -99,13 +99,12 @@ public class TwitterService {
 		}
 		// twitter action need do the post 
 		 try {
-			tweetStatus = twitter.updateStatus("Thanks for using Twitter Assistant. If you have any problem, please contact nieyan68@163.com");
+			tweetStatus = twitter.updateStatus("Thanks for using Twitter Assistant. If you have any problem, please contact: nieyan68@163.com .");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		} 
 		if (tweetStatus != null)
-			return "Check your Twitter, your tweet has been posted: "
-					+ event;
+			return "Thanks for using Twitter Assistant. If you have any problem, please contact: nieyan68@163.com .";
 		else
 			return "BOO! didn't work"; 
 	}
