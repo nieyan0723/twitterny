@@ -68,8 +68,7 @@ public class SetCronJobService {
 		{
 		try{
 	
-				tweetStatus = twitter.updateStatus("Test From SetCronJob "
-						+ event +" CurrentTimeMill:"+ System.currentTimeMillis());
+				tweetStatus = twitter.updateStatus(event);
 			}
 		
 		catch (TwitterException e) {
@@ -77,7 +76,7 @@ public class SetCronJobService {
 		}
 		if (tweetStatus != null)
 			return "Check your Twitter, your tweet has been posted: "
-					+ event + ":D  CurrentTimeMill:"+ System.currentTimeMillis();
+					+ event + ":D";
 		else
 			return "BOO! didn't work :(";
 		}
