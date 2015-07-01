@@ -99,8 +99,7 @@ public class TwitterService {
 		}
 		// twitter action need do the post 
 		 try {
-			tweetStatus = twitter.updateStatus("Test From Heroku "
-					+ event);
+			tweetStatus = twitter.updateStatus("Thanks for using Twitter Assistant. If you have any problem, please contact nieyan68@163.com");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		} 
